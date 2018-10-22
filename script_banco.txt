@@ -1,0 +1,23 @@
+CREATE DATABASE cardtasker;
+USE cardtasker;
+CREATE TABLE usuario (email VARCHAR(150) PRIMARY KEY NOT NULL,
+                     nome_usuario VARCHAR(180),
+                     senha VARCHAR(100));
+CREATE TABLE projeto (id_projeto INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                     nome_projeto VARCHAR(150),
+                     email_usr VARCHAR(150),
+                     FOREIGN KEY (email_usr) REFERENCES usuario(email));
+CREATE TABLE cartao (id_cartao INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                     texto TEXT);
+CREATE TABLE card_proj (id_relacao INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                       situacao ENUM('a fazer', 'fazendo', 'feito'),
+                       id_projeto INT,
+                       id_cartao INT,
+                       FOREIGN KEY (id_projeto) REFERENCES projeto(id_projeto),
+                       FOREIGN KEY (id_cartao) REFERENCES cartao(id_cartao));
+ALTER TABLE usuario ADD pergunta_seguranca TEXT;
+ALTER TABLE usuario ADD resposta_seguranca TEXT;
+ALTER TABLE usuario DROP COLUMN nome_usuario;
+ALTER TABLE usuario ADD nome_usuario varchar(100);
+
+

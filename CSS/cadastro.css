@@ -1,0 +1,41 @@
+html {
+    background: url(../Imagens/cardTaskerFundoDef.png) no-repeat center fixed; 
+    background-size: cover;
+}
+#borderCard{
+    border-radius: 15px;
+    border: 3.5px solid #000000;
+    background: rgba(255, 255, 255, 0.89);
+    
+}
+#Tabela {
+    margin-top: 25px;
+}
+#ajustaTexto {
+    text-align: center;
+    margin-top: 15px;
+}
+#ajustaColuna {
+    margin-top: 55px;
+    text-align: center;
+}
+#ajustaSize {
+    width: 65%;
+}
+#ajudaSenha {
+    text-align: left;
+}
+#ajuda {
+    background:none;
+    border:none;
+    color:blue;
+    text-decoration: underline;
+}
+#ajuda2 {
+    background:none;
+    border:none;
+    color:blue;
+    text-decoration: underline;
+    margin-top: 55px;
+    
+}

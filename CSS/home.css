@@ -1,0 +1,21 @@
+html {
+    background: url(../Imagens/cardTaskerFundoDef.png) no-repeat center fixed; 
+    background-size: cover;
+}
+#borderCard{
+    border-radius: 15px;
+    border: 3.5px solid #000000;
+    background: rgba(255, 255, 255, 0.89);
+    height: 500px;
+}
+#Tabela {
+    margin-top: 25px;
+}
+
+#Botao {
+    width: 63.8%;
+    margin-top: -15px;
+}
+#campoInferior {
+    margin-top: 85px;
+}

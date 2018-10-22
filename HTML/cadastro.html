@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CardTasker</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../Imagens/cardTaskerFavicon.ico" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/cadastro.css">
+
+</head>
+<body>
+    <div class="card bg-dark text-white">
+        <img class="card-img">
+        <div class="card-img-overlay">
+            <div align="center">
+            <div class="card border-dark mb-3" style="max-width: 30rem;" id="borderCard">
+                <div class="card-body text-dark">
+                    <div align="center">
+                            <img src="../Imagens/cardTaskerLogoAjustado.png" class="img-fluid" alt="Responsive image">
+                        <div class="table-responsive">
+                            <form id="formulario" action="../PHP/cadastrar.php" method="POST">
+                                <div class="form-group">
+                                    <table id="Tabela" border="0">
+                                        <tr>
+                                            <td>
+                                                <p id="ajustaTexto">Primeiro nome</p>
+                                            </td>
+                                            <td id="ajustaSize">
+                                                <input type="text" class="form-control" placeholder="Primeiro nome" name="primeiroNome" id="esteNome">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p id="ajustaTexto">Seu e-mail</p>
+                                            </td>
+                                            <td>
+                                                <input type="email" name="email" class="form-control" placeholder="Insira seu e-mail" id="campoEmail">
+                                            </td>
+                                        </tr>
+                                        <tr id="verificaEmail1">
+                                            <td colspan="2" align="right">
+                                                    <p><small style="font-weight: bold; color: #D40606;">O endereço de e-mail informado é inválido!</small></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p id="ajustaTexto">Sua senha</p>
+                                            </td>
+                                            <td>
+                                                <input type="password" name="senha" class="form-control" id="campoSenha" placeholder="Insira sua senha">
+                                            </td>
+                                            <td>
+                                                    <p id="ajuda" onclick="apresentaAjudaSenha()">[?]</p>
+                                            </td>
+                                        </tr>
+                                        <tr id="ajudaSenha">
+                                            <td colspan="3">
+                                                <small style="font-weight: bold;">A senha deve cumprir com os seguintes parâmetros:<br>
+                                                    1- Ter no mínimo 8 caracteres;<br>
+                                                    2- Ter ao menos uma letra maiúscula;<br>
+                                                    3- Ter ao menos uma letra minúscula;<br>
+                                                    4- Ter ao menos um número;<br>
+                                                    5- Ter ao menos um caractere especial, como @, %, ou &, por exemplo.<br>
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <tr id="verificaSenha">
+                                                <td colspan="2" align="right">
+                                                        <p><small style="font-weight: bold; color: #D40606;">A senha informada é inválida!</small></p>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td colspan="2">
+                                                    <p id="ajustaColuna">Pergunta de segurança</p>
+                                                </td>
+                                                <td>
+                                                        <p id="ajuda2" onclick="apresentaAjudaPergunta()">[?]</p>
+                                                </td>
+                                        </tr>
+                                        <tr id="ajudaPergunta">
+                                            <td colspan="3">
+                                                    <small style="font-weight: bold;">
+                                                            <p>Esta pergunta será utilizada na tentativa de recuperar sua senha, no caso de tê-la esquecido.<br>
+                                                            Cabe ressaltar que as letras maiúsculas são tratadas como diferentes das letras minúsculas.<br>
+                                                            Portanto, recomenda-se utilizar respostas simples que apenas você poderia saber e sem tantos caracteres especiais ou letras maiúsculas.</p>
+                                                        </small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p id="ajustaTexto">Pergunta</p>
+                                            </td>
+                                            <td>
+                                                <textarea class="form-control" name="pergunta" rows="3" placeholder="Pergunta de segurança" id="umaPergunta"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p id="ajustaTexto">Resposta</p>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" placeholder="Resposta" name="resposta" id="estaResposta">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td colspan="3" align="center">
+                                                    <input type="submit" value="Cadastrar" class="btn btn-outline-dark btn-block" name="cadastro" id="botaoCadastro">
+                                                </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+<script src ="../Javascript/cadastro.js"></script>
+</html>
