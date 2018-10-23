@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CardTasker</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../Imagens/cardTaskerFavicon.ico" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/recuperaSenha.css">
+</head>
+<body>
+    <div class="card bg-dark text-white">
+        <img class="card-img">
+        <div class="card-img-overlay">
+            <div align="center">
+            <div class="card border-dark mb-3" style="max-width: 30rem;" id="borderCard">
+                <div class="card-body text-dark">
+                    <div align="center">
+                            <img src="../Imagens/cardTaskerLogoAjustado.png" class="img-fluid" alt="Responsive image">
+                        <div class="table-responsive">
+                                <form id="formulario" action="../PHP/recuperandoSenha.php" method="POST">
+                                    <div class="form-group">
+                                        <table id="Tabela">
+                                             <tr>
+                                                 <td>
+                                                     <p id="altura">Primeiro Nome</p>
+                                                 </td>
+                                                 <td>
+                                                    <input type="text" class="form-control" placeholder="Primeiro nome" name="primeiroNome" id="esteNome">
+                                                 </td>
+                                            </tr>
+                                             <tr>
+                                                 <td>
+                                                     <p align="center" id="altura2">E-mail</p>
+                                                 </td>
+                                                 <td>
+                                                    <input type="email" name="email" class="form-control" placeholder="Insira seu e-mail" id="campoEmail">
+                                                 </td>
+                                             </tr>
+                                             <tr>
+                                                 <td colspan="3" align="center">
+                                                    <p id="margem"><input type="submit" value="Enviar" class="btn btn-outline-dark btn-block" name="envio" id="botaoCadastro"></p>
+                                                 </td>
+                                             </tr>
+                            </table>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
