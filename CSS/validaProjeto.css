@@ -1,0 +1,43 @@
+
+body {background-color: #d4d4d4;}
+#logoMenu{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 4%;
+}
+#barraLateral{
+    background-color: #ff944d;
+    width:15%;
+    margin-top:0px;
+    height:94vh;
+	float: left;
+    overflow: auto;
+    border: 2px solid #000000;
+}
+h3 {
+    margin-top: 10%;
+    text-align: center;
+}
+#corpo {
+    margin-top: 70px;
+}
+a {
+    color: #FFFFFF;
+} 
+a:hover { color: #FFFFFF; } 
+#elementoColorido{
+    text-align: center;
+    background-color: #ff944d;
+}
+#elementoColorido:hover {
+    background-color: rgba(192,192,192,0.45);
+}
+#borderCard{
+    border-radius: 15px;
+    border: 3.5px solid #000000;
+    background: rgba(255, 255, 255, 0.89);
+    
+}
+#Tabela {
+    margin-top: 25px;
+    margin-bottom: 85px;
+}

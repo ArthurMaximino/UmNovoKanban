@@ -1,0 +1,1 @@
+Este é o script em linguagem SQL utilizado para a confecção do banco de dados da aplicação.

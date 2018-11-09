@@ -1,0 +1,1 @@
+Esta pasta é dedicada aos arquivos PHP do projeto
