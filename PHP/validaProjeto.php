@@ -15,7 +15,7 @@
       <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light" style="background-color: #f5f52c;">
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #ffff7e;">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
   <a class="navbar-brand" href="dashboard.php" id="logoMenu">CardTasker</a>
   </div>
@@ -128,6 +128,8 @@
         </div>
         </div>
     </div>
-
+    <div class="footer col-md-12">
+                <p id="easterEgg">© 2018-2018 Arthur Maximino All Rights Reserved</p>
+            </div>
 </body>
 </html>
