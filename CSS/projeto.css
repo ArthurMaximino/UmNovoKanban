@@ -1,0 +1,79 @@
+
+body {background-color: #dcdde1;}
+#logoMenu{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 4%;
+}
+#barraLateral{
+    background-color: #fcd670;
+    width:15%;
+    margin-top:0px;
+    height:91vh;
+	float: left;
+    overflow: auto;
+    border: 2px solid #000000;
+    border-bottom: none;
+    border-radius: 2px 2px 0px 0px;
+    font-weight: bold;
+}
+h3 {
+    margin-top: 15%;
+    text-align: center;
+}
+a {
+    color: #FFFFFF;
+} 
+a:hover { color: #FFFFFF; } 
+#elementoColorido{
+    text-align: center;
+    background-color: #fcd670;
+}
+#elementoColorido:hover {
+    background-color: rgba(255, 203, 5, 1);
+}
+#borderCard{
+    border-radius: 15px;
+    border: 3.5px solid #000000;
+    background: rgba(238, 238, 238, 1);
+    
+}
+hr {
+    border-top: 4px double #f4f4f4;
+    background: #f4f4f4;
+}
+#icone {
+    margin-top: 50px;
+}
+h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 300%;
+}
+#corAFazer {
+    background-color: #7afcff;
+}
+#corFazendo {
+    background-color: #B3FFC0;
+}
+#corFeito {
+    background-color: #FFA476;
+}
+#linhaCard {
+    height:70vh;
+}
+#borderCard{
+    border-radius: 15px;
+    border: 3.5px solid #000000;
+    background: rgba(238, 238, 238, 1);
+    
+}
+.footer {
+    clear: both;
+    background-color: #ffffcc;
+    padding-bottom: 1vh;
+    width: 100%;
+}
+#easterEgg {
+    padding: 8px;
+    font-style: oblique;
+    color: grey;
+}
