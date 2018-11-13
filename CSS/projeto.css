@@ -63,7 +63,7 @@ h3 {
     background-color: #FFA476;
 }
 #linhaCard {
-    height:70vh;
+    min-height: 68vh;
 }
 #borderCard{
     border-radius: 15px;
@@ -72,7 +72,8 @@ h3 {
     
 }
 #campo {
-    height:20vh
+    height: 87vh;
+    overflow: auto;
 }
 .footer {
     clear: both;

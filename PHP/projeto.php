@@ -72,7 +72,7 @@
 </div>
 
 <div class="card bg-dark " id="bordas">
-        <div >
+
         <div class="card-img-overlay">
             <div align="center">
 
@@ -92,8 +92,8 @@
   <div class="row" id="linhaCard">
   <div class="col" id="corAFazer">
   <p>Aqui ficaria o card</p>
-  <p>Outro card</p>
-  </div>
+  <p>Outro card</p><p>Outro card</p>
+</div>
   <div class="col" id="corFazendo">
   <p>Aqui ficaria o card</p>
   </div>
@@ -105,7 +105,7 @@
 </div>
 </div>
 </div>
-</div>
+
     <div class="footer col-md-12">
                 <p id="easterEgg">© 2018-2018 Arthur Maximino All Rights Reserved</p>
             </div>

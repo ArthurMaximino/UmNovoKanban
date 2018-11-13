@@ -47,7 +47,7 @@
         </ul>
     </div>
 </nav>
-<div class="card text-white" id="barraLateral">
+<div class="card text-white" id="barraLateral" style="font-weight: bold;">
   <ul class="list-group list-group-flush">
   <?php  
                 $nome_servidor = "localhost";
