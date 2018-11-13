@@ -14,6 +14,7 @@
       rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
       <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
+      <link href="https://fonts.googleapis.com/css?family=Dekko&amp;subset=latin-ext" rel="stylesheet"> 
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #ffff7e;">
@@ -91,6 +92,31 @@
   </div>
   <div class="row" id="linhaCard">
   <div class="col" id="corAFazer">
+  <ul class="list-group list-group-flush">
+      <?php 
+      $nome_servidor = "localhost";
+      $nome_usuario = "root";
+      $senha = "";
+      $nome_banco = "cardtasker";
+      $conecta = new mysqli($nome_servidor, $nome_usuario, $senha, $nome_banco);
+      if ($conecta->connect_error)
+      die("Ocorreu uma falha na conexão". $conecta->connect_error."<br>");
+      $email = $_SESSION['email'];
+      $sql = mysqli_query($conecta, "select id_projeto from projeto where email_usr = '$email'");
+      $busca = mysqli_fetch_assoc($sql);
+      $buscaDefinitiva = $busca["id_projeto"];
+      mysqli_set_charset($conecta, "utf8"); 
+      $sql2 = mysqli_query($conecta, "select texto from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'a fazer' and id_projeto='$buscaDefinitiva'");
+      while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
+      {    
+         echo "<li class='list-group-item cartao'>".$linha["texto"]."</li>";
+      }
+
+      
+      ?>
+    <li class="list-group-item cartao">Teste Este é um texto de teste, unicamente. Com esta longa string veremos o melhor tamanho</li>
+    <li class="list-group-item cartao">Teste</li>
+  </ul>
   <p>Aqui ficaria o card</p>
   <p>Outro card</p><p>Outro card</p>
 </div>

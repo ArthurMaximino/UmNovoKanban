@@ -1,5 +1,5 @@
 
-body {background-color: #dcdde1;}
+body {background-color: #ffffff;}
 #logoMenu{
     font-family: 'Ubuntu', sans-serif;
     margin-left: 4%;
@@ -41,10 +41,12 @@ hr {
     border-top: 4px double #f4f4f4;
     background: #f4f4f4;
 }
-.card-img {
-    width: 100%;
-    height: 90.8vh;
-    object-fit: cover;
+.cartao {
+    font-family: 'Dekko', cursive;
+    font-size: 26px;
+    border-radius: 25%;
+    margin-top: 6px;
+    background-color: #F5F5F5;
 }
 #icone {
     margin-top: 50px;
