@@ -72,12 +72,12 @@
 </div>
 
 <div class="card bg-dark " id="bordas">
-        <img class="card-img">
+        <div >
         <div class="card-img-overlay">
             <div align="center">
 
 
-  <div class="container-fluid no-padding">
+  <div class="container-fluid no-padding" id="campo">
   <div class="row">
     <div class="col" id="corAFazer">
       <h3>A FAZER</h3><hr>
@@ -101,6 +101,7 @@
   <p>Aqui ficaria o card</p>
   </div>
   </div>
+</div>
 </div>
 </div>
 </div>
