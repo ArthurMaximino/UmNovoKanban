@@ -15,6 +15,7 @@
       <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
       <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
       <link href="https://fonts.googleapis.com/css?family=Dekko&amp;subset=latin-ext" rel="stylesheet"> 
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #ffff7e;">
@@ -92,7 +93,7 @@
   </div>
   <div class="row" id="linhaCard">
   <div class="col" id="corAFazer">
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush connectedSortable" id="listaAFazer">
       <?php 
       $nome_servidor = "localhost";
       $nome_usuario = "root";
@@ -102,35 +103,110 @@
       if ($conecta->connect_error)
       die("Ocorreu uma falha na conexão". $conecta->connect_error."<br>");
       $email = $_SESSION['email'];
-      $sql = mysqli_query($conecta, "select id_projeto from projeto where email_usr = '$email'");
+      $nomeProjeto = $_GET['paginaProjeto'];
+      $sql = mysqli_query($conecta, "select id_projeto from projeto where email_usr = '$email' and nome_projeto='$nomeProjeto'");
       $busca = mysqli_fetch_assoc($sql);
       $buscaDefinitiva = $busca["id_projeto"];
       mysqli_set_charset($conecta, "utf8"); 
       $sql2 = mysqli_query($conecta, "select texto from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'a fazer' and id_projeto='$buscaDefinitiva'");
+      $minhaFlag = 1;
       while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
       {    
-         echo "<li class='list-group-item cartao'>".$linha["texto"]."</li>";
+         echo "<li id='$minhaFlag' class='list-group-item cartao'>".$linha["texto"]."</li>";
+         $minhaFlag++;
       }
 
       
       ?>
-    <li class="list-group-item cartao">Teste Este é um texto de teste, unicamente. Com esta longa string veremos o melhor tamanho</li>
-    <li class="list-group-item cartao">Teste</li>
   </ul>
-  <p>Aqui ficaria o card</p>
-  <p>Outro card</p><p>Outro card</p>
 </div>
   <div class="col" id="corFazendo">
-  <p>Aqui ficaria o card</p>
+  <ul class="list-group list-group-flush connectedSortable" id="listaFazendo">
+  <?php 
+      $nome_servidor = "localhost";
+      $nome_usuario = "root";
+      $senha = "";
+      $nome_banco = "cardtasker";
+      $conecta = new mysqli($nome_servidor, $nome_usuario, $senha, $nome_banco);
+      if ($conecta->connect_error)
+      die("Ocorreu uma falha na conexão". $conecta->connect_error."<br>");
+      $email = $_SESSION['email'];
+      $nomeProjeto = $_GET['paginaProjeto'];
+      $sql = mysqli_query($conecta, "select id_projeto from projeto where email_usr = '$email' and nome_projeto='$nomeProjeto'");
+      $busca = mysqli_fetch_assoc($sql);
+      $buscaDefinitiva = $busca["id_projeto"];
+      mysqli_set_charset($conecta, "utf8"); 
+      $sql2 = mysqli_query($conecta, "select texto from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'fazendo' and id_projeto='$buscaDefinitiva'");
+      while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
+      {    
+         echo "<li id='$minhaFlag' class='list-group-item cartao'>".$linha["texto"]."</li>";
+         $minhaFlag++;
+      }
+
+      
+      ?>
+      </ul>
   </div>
   <div class="col" id="corFeito">
-  <p>Aqui ficaria o card</p>
+  <ul class="list-group list-group-flush connectedSortable" id="listaFeito">
+  <?php 
+      $nome_servidor = "localhost";
+      $nome_usuario = "root";
+      $senha = "";
+      $nome_banco = "cardtasker";
+      $conecta = new mysqli($nome_servidor, $nome_usuario, $senha, $nome_banco);
+      if ($conecta->connect_error)
+      die("Ocorreu uma falha na conexão". $conecta->connect_error."<br>");
+      $email = $_SESSION['email'];
+      $nomeProjeto = $_GET['paginaProjeto'];
+      $sql = mysqli_query($conecta, "select id_projeto from projeto where email_usr = '$email' and nome_projeto='$nomeProjeto'");
+      $busca = mysqli_fetch_assoc($sql);
+      $buscaDefinitiva = $busca["id_projeto"];
+      mysqli_set_charset($conecta, "utf8"); 
+      $sql2 = mysqli_query($conecta, "select texto from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'feito' and id_projeto='$buscaDefinitiva'");
+      while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
+      {    
+         echo "<li id='$minhaFlag' class='list-group-item cartao'>".$linha["texto"]."</li>";
+         $minhaFlag++;
+      }
+
+      
+      ?>
+      </ul>
   </div>
   </div>
 </div>
 </div>
 </div>
 </div>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+ <script>
+
+$(function() {
+        $( "#listaAFazer, #listaFazendo, #listaFeito" ).sortable({
+            connectWith: ".connectedSortable",
+            receive: function(event,ui){
+                 console.log("old ui id = "+ui.sender.attr("id")+" new ul id = "+this.id+" li id "+$(ui.item).attr("id"));                   
+                 if(ui.sender.attr("id") != this.id)
+                 {  
+                    //Your ajax call will come here
+
+
+                            $.ajax({
+                    type: "POST",
+                    url: "arrastar.php", 
+         // Write you //php mysql logic here you'll get all your data in logic.php file 
+                  data: { left: ui.sender.attr("id"), right: this.id , responsibility:$(ui.item).attr("id") }
+                }).done(function( msg ) {
+                              alert( "Data Saved: " + msg );
+                            });
+                 }
+            }
+
+        }).disableSelection();
+    });
+</script>
 
     <div class="footer col-md-12">
                 <p id="easterEgg">© 2018-2018 Arthur Maximino All Rights Reserved</p>
