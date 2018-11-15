@@ -72,6 +72,7 @@
   </ul>
 </div>
 </div>
+<div id="snackbar">Mudança salva com sucesso!</div>
 
 <div class="card bg-dark " id="bordas">
 
@@ -108,12 +109,10 @@
       $busca = mysqli_fetch_assoc($sql);
       $buscaDefinitiva = $busca["id_projeto"];
       mysqli_set_charset($conecta, "utf8"); 
-      $sql2 = mysqli_query($conecta, "select texto from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'a fazer' and id_projeto='$buscaDefinitiva'");
-      $minhaFlag = 1;
+      $sql2 = mysqli_query($conecta, "select cartao.texto, cartao.id_cartao from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'a fazer' and id_projeto='$buscaDefinitiva'");
       while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
       {    
-         echo "<li id='$minhaFlag' class='list-group-item cartao'>".$linha["texto"]."</li>";
-         $minhaFlag++;
+        echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao'>".$linha["texto"]."</li>";
       }
 
       
@@ -136,11 +135,10 @@
       $busca = mysqli_fetch_assoc($sql);
       $buscaDefinitiva = $busca["id_projeto"];
       mysqli_set_charset($conecta, "utf8"); 
-      $sql2 = mysqli_query($conecta, "select texto from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'fazendo' and id_projeto='$buscaDefinitiva'");
+      $sql2 = mysqli_query($conecta, "select cartao.texto, cartao.id_cartao from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'fazendo' and id_projeto='$buscaDefinitiva'");
       while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
       {    
-         echo "<li id='$minhaFlag' class='list-group-item cartao'>".$linha["texto"]."</li>";
-         $minhaFlag++;
+         echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao'>".$linha["texto"]."</li>";
       }
 
       
@@ -163,11 +161,10 @@
       $busca = mysqli_fetch_assoc($sql);
       $buscaDefinitiva = $busca["id_projeto"];
       mysqli_set_charset($conecta, "utf8"); 
-      $sql2 = mysqli_query($conecta, "select texto from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'feito' and id_projeto='$buscaDefinitiva'");
+      $sql2 = mysqli_query($conecta, "select cartao.texto, cartao.id_cartao from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'feito' and id_projeto='$buscaDefinitiva'");
       while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
       {    
-         echo "<li id='$minhaFlag' class='list-group-item cartao'>".$linha["texto"]."</li>";
-         $minhaFlag++;
+        echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao'>".$linha["texto"]."</li>";
       }
 
       
@@ -195,11 +192,13 @@ $(function() {
 
                             $.ajax({
                     type: "POST",
-                    url: "arrastar.php", 
+                    url: "arrastarESoltar.php", 
          // Write you //php mysql logic here you'll get all your data in logic.php file 
                   data: { left: ui.sender.attr("id"), right: this.id , responsibility:$(ui.item).attr("id") }
                 }).done(function( msg ) {
-                              alert( "Data Saved: " + msg );
+                    var x = document.getElementById("snackbar");
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
                             });
                  }
             }
