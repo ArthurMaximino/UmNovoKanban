@@ -21,6 +21,7 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #ffff7e;">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
   <a class="navbar-brand" href="dashboard.php" id="logoMenu">CardTasker</a>
+  <button id="myBtn" class="btn btn-outline-dark">Novo cartão</button>
   </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
   <ul class="navbar-nav ml-auto">
@@ -73,6 +74,47 @@
 </div>
 </div>
 <div id="snackbar">Mudança salva com sucesso!</div>
+
+<!--A modal para criar um novo cartão-->
+<div id="myModal" class="modal">
+
+<div class="modal-content">
+  <div id="desloca"><span class="close">&times;</span></div>
+  <div class="table-responsive">
+  <div class="form-group">
+      <?php 
+      
+      ?>
+  <form id="formulario" action="../PHP/inserirCartao.php?nomeProjeto=<?php $nomeProjeto = $_GET['paginaProjeto']; echo $nomeProjeto?>" method="POST">
+  <table width="100%">
+    <tr>
+        <td>
+        <input type="text" class="form-control" placeholder="Insira o texto do cartão" name="textoCartao">
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <select class="custom-select" name="situacao">
+  <option selected>Escolha a situação do cartão</option>
+  <option value="a fazer">A fazer</option>
+  <option value="fazendo">Fazendo</option>
+  <option value="feito">Feito</option>
+</select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <input type="submit" value="Inserir" class="btn btn-outline-dark btn-block" name="inserir" id="botaoInserir">
+        </td>
+    </tr>
+
+</table>
+</form>
+</div>
+</div>
+</div>
+
+</div>
 
 <div class="card bg-dark " id="bordas">
 
@@ -210,18 +252,9 @@ $(function() {
     <div class="footer col-md-12">
                 <p id="easterEgg">© 2018-2018 Arthur Maximino All Rights Reserved</p>
             </div>
+            <script src ="../Javascript/novoCartao.js"></script>
 </body>
 </html>
 
-
-<?php
-//$teste = $_GET['paginaProjeto'];
-//echo $teste;
-
-
-
-
-
-?>
 
 

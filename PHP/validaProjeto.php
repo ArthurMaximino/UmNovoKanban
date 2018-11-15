@@ -100,6 +100,7 @@
                                     }
                                     else
                                     {
+                                        //mysqli_set_charset($conecta, "utf8");
                                     $sql = mysqli_query($conecta,"INSERT INTO projeto (nome_projeto, email_usr) VALUES ('$nome_projeto','$email')");
                                     if(!$sql)
                                         die("Query Failed: " .  mysqli_error($conecta));
