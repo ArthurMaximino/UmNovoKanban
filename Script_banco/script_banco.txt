@@ -19,5 +19,5 @@ ALTER TABLE usuario ADD pergunta_seguranca TEXT;
 ALTER TABLE usuario ADD resposta_seguranca TEXT;
 ALTER TABLE usuario DROP COLUMN nome_usuario;
 ALTER TABLE usuario ADD nome_usuario varchar(100);
-
-
+ALTER TABLE cartao ADD COLUMN usr_email VARCHAR(150), ADD FOREIGN KEY usr_mail(usr_email) REFERENCES usuario(email) ON DELETE CASCADE;
+ALTER TABLE cartao ADD COLUMN data_ist datetime;

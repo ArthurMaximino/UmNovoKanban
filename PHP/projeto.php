@@ -21,7 +21,12 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #ffff7e;">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
   <a class="navbar-brand" href="dashboard.php" id="logoMenu">CardTasker</a>
-  <button id="myBtn" class="btn btn-outline-dark">Novo cartão</button>
+  <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link clickable" id="myBtn">Novo cartão</a>
+      </li>
+    </ul>
+  
   </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
   <ul class="navbar-nav ml-auto">
@@ -154,7 +159,7 @@
       $sql2 = mysqli_query($conecta, "select cartao.texto, cartao.id_cartao from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'a fazer' and id_projeto='$buscaDefinitiva'");
       while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
       {    
-        echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao'>".$linha["texto"]."</li>";
+        echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao clickable'>".$linha["texto"]."</li>";
       }
 
       
@@ -180,7 +185,7 @@
       $sql2 = mysqli_query($conecta, "select cartao.texto, cartao.id_cartao from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'fazendo' and id_projeto='$buscaDefinitiva'");
       while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
       {    
-         echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao'>".$linha["texto"]."</li>";
+         echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao clickable'>".$linha["texto"]."</li>";
       }
 
       
@@ -206,7 +211,7 @@
       $sql2 = mysqli_query($conecta, "select cartao.texto, cartao.id_cartao from cartao inner join card_proj on card_proj.id_cartao = cartao.id_cartao where card_proj.situacao = 'feito' and id_projeto='$buscaDefinitiva'");
       while ($linha = mysqli_fetch_array($sql2, MYSQLI_ASSOC))
       {    
-        echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao'>".$linha["texto"]."</li>";
+        echo "<li id='". $linha["id_cartao"]."' class='list-group-item cartao clickable'>".$linha["texto"]."</li>";
       }
 
       

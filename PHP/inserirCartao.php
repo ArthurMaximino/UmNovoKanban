@@ -14,10 +14,11 @@ session_start();
                 $nomeProjeto = $_GET['nomeProjeto'];
                 $texto = $_POST["textoCartao"];
                 $situacao = $_POST["situacao"];
-                echo $nomeProjeto;
+                $datetime = date('Y-m-d H:i:s');
+                //echo $nomeProjeto;
                 
                 mysqli_set_charset($conecta, "utf8");
-                $sql = mysqli_query($conecta,"INSERT INTO cartao(texto) VALUES ('$texto')");
+                $sql = mysqli_query($conecta,"INSERT INTO cartao(texto, usr_email, data_ist) VALUES ('$texto', '$email', '$datetime')");
                 if(!$sql)
                                        die("Query Failed: " .  mysqli_error($conecta));
                 $conecta2 = new mysqli($nome_servidor, $nome_usuario, $senha, $nome_banco);
@@ -25,11 +26,13 @@ session_start();
                 
                 $resultado = mysqli_fetch_array($sql2);
                 $idprojeto = $resultado["id_projeto"];
-                echo $idprojeto;
+                 //echo $idprojeto;
 
-                $sql3 = mysqli_query($conecta,"SELECT id_cartao FROM cartao WHERE texto = '$texto'");
+                $sql3 = mysqli_query($conecta,"SELECT id_cartao FROM cartao WHERE usr_email='$email' AND texto='$texto' AND data_ist='$datetime'");
                 $resultado = mysqli_fetch_array($sql3);
+
                 $idcartao = $resultado["id_cartao"];
+                //echo $idcartao;
                 $sql2 = mysqli_query($conecta2,"INSERT INTO card_proj(situacao, id_projeto, id_cartao) VALUES ('$situacao', $idprojeto, $idcartao)");
                 header("location:projeto.php?paginaProjeto=".$nomeProjeto);
 

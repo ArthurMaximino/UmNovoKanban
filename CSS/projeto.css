@@ -24,6 +24,13 @@ a {
     color: #FFFFFF;
 } 
 a:hover { color: #FFFFFF; }
+.clickable {
+    cursor: pointer;
+}
+#myBtn:hover {
+    color: #000;
+    background-color:#FFFF98;
+}
 
 .modal {
     display: none; /* Hidden by default */
@@ -122,6 +129,7 @@ a:hover { color: #FFFFFF; }
 #elementoColorido:hover {
     background-color: rgba(255, 203, 5, 1);
 }
+
 #borderCard{
     border-radius: 15px;
     border: 3.5px solid #000000;
